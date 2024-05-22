@@ -5,8 +5,8 @@ King :: King()
     x_val = 0;
     y_val = 0;
 
-    x_pos = 0;
-    y_pos = 0;
+    x_pos = SCREEN_WIDTH / 2;
+    y_pos = 4800;
 
     HeightFrame = 64;
     WidthFrame = 61;
@@ -31,12 +31,12 @@ King :: King()
 }
 
 
-void King::drawJumpForce()
+void King::drawJumpForce(SDL_Renderer *renderer)
 {
     if ( JumpTime != 0 )
     {
         SDL_Rect jumpForce = { SCREEN_WIDTH - 100, 0, JumpTime * 100 / MAX_JUMP_TIME, 20};
-        SDL_SetRenderDrawColor( renderer, 0xFF, 0x00, 0x00, 0xFF );
+        SDL_SetRenderDrawColor( renderer, 255, 0, 0, 255 );
         SDL_RenderFillRect( renderer, &jumpForce );
     }
 }

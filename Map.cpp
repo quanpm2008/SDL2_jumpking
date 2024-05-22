@@ -26,7 +26,7 @@ void GameMap::LoadMap(string path)
     game_map.max_y = game_map.max_y*TILE_SIZE;
 
     game_map.start_x=0;
-    game_map.start_y=0;
+    game_map.start_y=4480;
 
     file.close();
 }

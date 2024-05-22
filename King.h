@@ -25,10 +25,10 @@ public:
 
     void firstPos()
     {
-        x_pos = 0;
-        y_pos = 0;
+        x_pos = SCREEN_WIDTH / 2;
+        y_pos = 4800;
     }
-    void drawJumpForce();
+    void drawJumpForce(SDL_Renderer *renderer);
 
 
 private:

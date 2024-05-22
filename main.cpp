@@ -204,7 +204,7 @@ int main(int argc, char* argv[])
     {
         if (Mix_PausedMusic() == 0)
            {
-                                    Mix_PauseMusic();
+                Mix_PauseMusic();
             }
          Map map_data = game_map.GetMap();
          if(map_data.start_y < 3*640)
@@ -231,10 +231,11 @@ int main(int argc, char* argv[])
 
     game_map.SetMap(map_data);
     game_map.Drawmap(renderer);
+
     king.Show(renderer);
 
+    king.drawJumpForce(renderer);
 
-    king.drawJumpForce();
     SDL_Rect King_pos = king.GetRect();
     if((King_pos.x >= 576 && King_pos.x <= 600) && (King_pos.y <= 260 && King_pos.y >= 200)  && map_data.start_y < 640)
     {

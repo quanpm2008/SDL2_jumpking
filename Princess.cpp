@@ -54,3 +54,7 @@ void Princess :: Show(SDL_Renderer* renderer)
 
 
 }
+
+
+
+
