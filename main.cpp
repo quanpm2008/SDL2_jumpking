@@ -28,6 +28,8 @@ struct PAUSE
 PAUSE pause_;
 
 
+Mix_Music* gMenuSound = NULL;
+Mix_Music* gVictorySound = NULL;
 
 
 bool CheckButton(SDL_Event &e, SDL_Rect image)
@@ -46,10 +48,8 @@ int main(int argc, char* argv[])
 {
    initSDL(window, renderer,SCREEN_WIDTH,SCREEN_HEIGHT,WINDOW_TITLE);
 
-
-   gMenuSound = Mix_LoadMUS("img//menu.wav");
-
-
+   gMenuSound = Mix_LoadMUS("img//menu.mp3");
+   gVictorySound = Mix_LoadMUS("img//Victory.mp3");
 
    background.LoadImage("img//Jungle_background.png", renderer);
    background2.LoadImage("img//castle_wall_background.png", renderer);
@@ -102,7 +102,18 @@ int main(int argc, char* argv[])
         quit.SetRect(100, 350);
         newgame.Render(renderer, NULL);
         quit.Render(renderer, NULL);
-        Mix_PlayMusic( gMenuSound, -1);
+
+        if( Mix_PlayingMusic() == 0 )
+                            {
+                                //Play the music
+                                Mix_PlayMusic( gMenuSound, -1 );
+                            }
+        if( Mix_PausedMusic() == 1 )
+                                {
+                                    //Resume the music
+                                    Mix_PlayMusic( gMenuSound, -1 );
+                                }
+
     }
 
     if(CheckButton(event, newgame.GetRect()) && event.type == SDL_MOUSEBUTTONDOWN && !play)
@@ -165,12 +176,23 @@ int main(int argc, char* argv[])
         background_EndGame.Render(renderer, NULL);
         pause_.menu_.SetRect(575, 300);
         pause_.menu_.Render(renderer, NULL);
+         if( Mix_PausedMusic() == 1 )
+                            {
+                                //Play the music
+                                Mix_PlayMusic( gVictorySound, -1 );
+                            }
+
         if(CheckButton(event, pause_.menu_.GetRect()) && event.type == SDL_MOUSEBUTTONDOWN)
         {
 
             pause = false;
             play = false;
             EndGame = false;
+            if (Mix_PausedMusic() == 0)
+           {
+                                    Mix_PauseMusic();
+            }
+
         }
 
     }
@@ -180,21 +202,25 @@ int main(int argc, char* argv[])
 
     if(play && !pause)
     {
-    Map map_data = game_map.GetMap();
-    if(map_data.start_y < 3*640)
-    {
-        background3.Render(renderer, NULL);
-    }
-    else if(map_data.start_y < 5*640)
-    {
-        background2.Render(renderer, NULL);
-    }
-    else background.Render(renderer, NULL);
+        if (Mix_PausedMusic() == 0)
+           {
+                                    Mix_PauseMusic();
+            }
+         Map map_data = game_map.GetMap();
+         if(map_data.start_y < 3*640)
+         {
+              background3.Render(renderer, NULL);
+         }
+         else if(map_data.start_y < 5*640)
+         {
+              background2.Render(renderer, NULL);
+         }
+         else background.Render(renderer, NULL);
 
-    if(map_data.start_y < 640)
-    {
-        princess.Show(renderer);
-    }
+         if(map_data.start_y < 640)
+         {
+              princess.Show(renderer);
+         }
 
 
 
@@ -202,11 +228,13 @@ int main(int argc, char* argv[])
 
     king.SetMap_y(map_data.start_y);
     king.Do_Player(map_data);
-    king.Show(renderer);
 
     game_map.SetMap(map_data);
     game_map.Drawmap(renderer);
+    king.Show(renderer);
 
+
+    king.drawJumpForce();
     SDL_Rect King_pos = king.GetRect();
     if((King_pos.x >= 576 && King_pos.x <= 600) && (King_pos.y <= 260 && King_pos.y >= 200)  && map_data.start_y < 640)
     {

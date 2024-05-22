@@ -34,14 +34,6 @@ const int GRAVITY = 1;
 
 
 
-static Mix_Chunk* gjumpSound;
-static Mix_Music* gMenuSound;
-
-
-
-
-
-
 
 
 #define TILE_SIZE 64

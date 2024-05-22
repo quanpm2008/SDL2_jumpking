@@ -45,6 +45,8 @@ void initSDL(SDL_Window* &window, SDL_Renderer* &renderer,int SCREEN_WIDTH,int S
                     cout<<"SDL_mixer could not initialize! SDL_mixer Error:";
                 }
 
+
+
 }
 
 void quitSDL(SDL_Window* window, SDL_Renderer* renderer)

@@ -26,11 +26,27 @@ King :: King()
     map_y = 0;
 
 
+
+
+}
+
+
+void King::drawJumpForce()
+{
+    if ( JumpTime != 0 )
+    {
+        SDL_Rect jumpForce = { SCREEN_WIDTH - 100, 0, JumpTime * 100 / MAX_JUMP_TIME, 20};
+        SDL_SetRenderDrawColor( renderer, 0xFF, 0x00, 0x00, 0xFF );
+        SDL_RenderFillRect( renderer, &jumpForce );
+    }
 }
 
 void King :: set_clip()
 {
     gjumpSound = Mix_LoadWAV("img//jump.wav");
+    gFallSound = Mix_LoadWAV("img//Fall.wav");
+    gCollisionSound = Mix_LoadWAV("img//Collision.wav");
+
     for(int i = 0; i < 2 ; i++)
     {
         frame_clip[i].x = i*WidthFrame;
@@ -58,6 +74,7 @@ void King :: Show(SDL_Renderer* renderer)
      if(input_type.forcing && OnGround)
     {
         LoadImage("img//Forcing.png", renderer);
+
     }
     if(input_type.jump)
     {
@@ -139,10 +156,13 @@ void King ::HandleEvent(SDL_Event event )
 
      if(event.key.keysym.sym == SDLK_SPACE)
      {
+
          if(event.key.repeat == 0 && event.type == SDL_KEYDOWN && OnGround )
          {
              input_type.forcing = true;
 
+             input_type.left = false;
+             input_type.right = false;
          }
          else if(((event.key.repeat == 0 && event.type == SDL_KEYUP) || JumpTime == MAX_JUMP_TIME) && OnGround && input_type.forcing)
          {
@@ -157,7 +177,7 @@ void King ::HandleEvent(SDL_Event event )
 
 void King ::Do_Player( Map& map_data)
 {
-    cout<<input_type.falling<<"   "<<input_type.jump<<endl;
+
     x_val = 0;
 
     y_val += GRAVITY;
@@ -184,7 +204,6 @@ void King ::Do_Player( Map& map_data)
         if(JumpTime < MAX_JUMP_TIME)
              {
                  JumpTime++;
-                 //cout<<JumpTime<<" ";
              }
     }
     else if(input_type.jump)
@@ -284,6 +303,7 @@ void King ::Check_map(Map &map_data)
                 if((input_type.jump || input_type.falling) && y_val >= 0)
                 {
                     Collision = true;
+                    Mix_PlayChannel(-1, gCollisionSound, 0);
                 }
             }
             else
@@ -304,6 +324,7 @@ void King ::Check_map(Map &map_data)
                 x_pos = (x1 + 1)*TILE_SIZE;
                 if((input_type.jump || input_type.falling) && y_val >= 0)
                 {
+                    Mix_PlayChannel(-1, gCollisionSound, 0);
                     Collision = true;
                 }
             }
@@ -335,6 +356,7 @@ void King ::Check_map(Map &map_data)
                 y_pos = y2*TILE_SIZE - HeightFrame;
                 OnGround = true;
                 input_type.falling = false;
+
             }
             else OnGround = false;
         }
@@ -349,7 +371,6 @@ void King ::Check_map(Map &map_data)
 
         }
     }
-
 
     y_pos += y_val;
     x_pos += x_val;

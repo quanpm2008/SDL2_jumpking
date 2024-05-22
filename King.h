@@ -28,6 +28,7 @@ public:
         x_pos = 0;
         y_pos = 0;
     }
+    void drawJumpForce();
 
 
 private:
@@ -51,6 +52,10 @@ private:
     bool check;
     int map_y;
     int currentFrame;
+
+    Mix_Chunk* gjumpSound;
+    Mix_Chunk* gFallSound;
+    Mix_Chunk* gCollisionSound;
 };
 
 

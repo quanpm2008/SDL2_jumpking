@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1716027276 source:d:\games\sdl_game\jump_king\jump_king\commonfun.cpp
+1716298857 source:d:\games\sdl_game\jump_king\jump_king\commonfun.cpp
 	"CommonFun.h"
 
-1716051903 source:d:\games\sdl_game\jump_king\jump_king\main.cpp
+1716306724 source:d:\games\sdl_game\jump_king\jump_king\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -17,7 +17,7 @@
 1711875569 d:\games\sdl_game\jump_king\jump_king\baseobject.h
 	"CommonFun.h"
 
-1716050225 d:\games\sdl_game\jump_king\jump_king\commonfun.h
+1716298857 d:\games\sdl_game\jump_king\jump_king\commonfun.h
 	<bits/stdc++.h>
 	<windows.h>
 	<SDL.h>
@@ -32,10 +32,10 @@
 1715443239 d:\games\sdl_game\jump_king\jump_king\map.h
 	"BaseObject.h"
 
-1716049708 source:d:\games\sdl_game\jump_king\jump_king\king.cpp
+1716306724 source:d:\games\sdl_game\jump_king\jump_king\king.cpp
 	"King.h"
 
-1715965826 d:\games\sdl_game\jump_king\jump_king\king.h
+1716305645 d:\games\sdl_game\jump_king\jump_king\king.h
 	"BaseObject.h"
 
 1715704903 source:d:\games\sdl_game\jump_king\jump_king\princess.cpp
