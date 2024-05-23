@@ -77,7 +77,6 @@ int main(int argc, char* argv[])
 
    King king;
    Princess princess;
-   //king.LoadImage("img//king.jpg", renderer);
    king.set_clip();
    princess.set_clip();
 
@@ -105,14 +104,13 @@ int main(int argc, char* argv[])
 
         if( Mix_PlayingMusic() == 0 )
                             {
-                                //Play the music
                                 Mix_PlayMusic( gMenuSound, -1 );
                             }
         if( Mix_PausedMusic() == 1 )
                                 {
-                                    //Resume the music
                                     Mix_PlayMusic( gMenuSound, -1 );
                                 }
+
 
     }
 
@@ -178,7 +176,6 @@ int main(int argc, char* argv[])
         pause_.menu_.Render(renderer, NULL);
          if( Mix_PausedMusic() == 1 )
                             {
-                                //Play the music
                                 Mix_PlayMusic( gVictorySound, -1 );
                             }
 
@@ -207,6 +204,7 @@ int main(int argc, char* argv[])
                 Mix_PauseMusic();
             }
          Map map_data = game_map.GetMap();
+
          if(map_data.start_y < 3*640)
          {
               background3.Render(renderer, NULL);
@@ -246,10 +244,8 @@ int main(int argc, char* argv[])
 
     }
     SDL_RenderPresent(renderer);
-    //SDL_Delay(16);
-
     }
-    //waitUntilKeyPressed();
+
     quitSDL(window, renderer);
     return 0;
 

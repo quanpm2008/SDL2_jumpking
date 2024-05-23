@@ -3,8 +3,6 @@
 Princess :: Princess()
 {
 
-
-
     HeightFrame = 64;
     WidthFrame = 64;
 

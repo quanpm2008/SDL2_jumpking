@@ -42,7 +42,7 @@ private:
     int WidthFrame;
     int JumpTime;
 
-    SDL_Rect frame_clip[8];
+    SDL_Rect frame_clip[2];
     Input input_type;
     int frame;
     int KingStatus;
@@ -50,6 +50,7 @@ private:
     bool Collision;
 
     bool check;
+
     int map_y;
     int currentFrame;
 

@@ -63,8 +63,6 @@ struct Map
 
 
     int tile[MAX_MAP_y][MAX_MAP_x];
-
-
 };
 
 

@@ -74,12 +74,12 @@ void King :: Show(SDL_Renderer* renderer)
      if(input_type.forcing && OnGround)
     {
         LoadImage("img//Forcing.png", renderer);
-
     }
     if(input_type.jump)
     {
         LoadImage("img//Jumping.png", renderer);
     }
+
     SDL_RendererFlip flip = SDL_FLIP_NONE;
     if(KingStatus == 1)
     {
@@ -94,7 +94,6 @@ void King :: Show(SDL_Renderer* renderer)
     {
         frame++;
     }
-
     else frame = 0;
 
     if(frame / 9 >= currentFrame)
@@ -111,9 +110,7 @@ void King :: Show(SDL_Renderer* renderer)
 
     SDL_RenderCopyEx(renderer, p_object, current_clip, &renderQuad, NULL, NULL, flip);
 
-
 }
-
 
 
 void King ::HandleEvent(SDL_Event event )
@@ -160,7 +157,6 @@ void King ::HandleEvent(SDL_Event event )
          if(event.key.repeat == 0 && event.type == SDL_KEYDOWN && OnGround )
          {
              input_type.forcing = true;
-
              input_type.left = false;
              input_type.right = false;
          }
@@ -181,8 +177,6 @@ void King ::Do_Player( Map& map_data)
     x_val = 0;
 
     y_val += GRAVITY;
-
-
 
     if(y_val >= MAX_FALLING_VAL)
     {
@@ -338,7 +332,6 @@ void King ::Check_map(Map &map_data)
             }
         }
     }
-    //y_val = min( y_val + 1, MAX_FALLING_VAL);
     //check va cham chieu doc
     x1 = x_pos/TILE_SIZE;
     x2 = (x_pos + WidthFrame - 1)/TILE_SIZE;
@@ -385,7 +378,7 @@ void King ::Check_map(Map &map_data)
     {
         x_pos = map_data.max_x - WidthFrame ;
     }
-    //if (map_data.tile[((int)y_pos + HeightFrame) / 64][(int)x_pos / 64] == 0 && map_data.tile[((int)y_pos + HeightFrame) / 64][((int)x_pos + WidthFrame) / 64] == 0) OnGround = false;
+
     if(y_pos < 0)
     {
         y_pos = 0;
