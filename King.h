@@ -28,7 +28,7 @@ public:
         x_pos = SCREEN_WIDTH / 2;
         y_pos = 4800;
     }
-    void drawJumpForce(SDL_Renderer *renderer);
+    void drawJumpForce(SDL_Renderer *renderer, Map &map_data);
 
 
 private:

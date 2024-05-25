@@ -232,7 +232,7 @@ int main(int argc, char* argv[])
 
     king.Show(renderer);
 
-    king.drawJumpForce(renderer);
+    king.drawJumpForce(renderer, map_data);
 
     SDL_Rect King_pos = king.GetRect();
     if((King_pos.x >= 576 && King_pos.x <= 600) && (King_pos.y <= 260 && King_pos.y >= 200)  && map_data.start_y < 640)

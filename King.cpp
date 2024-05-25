@@ -31,11 +31,16 @@ King :: King()
 }
 
 
-void King::drawJumpForce(SDL_Renderer *renderer)
+void King::drawJumpForce(SDL_Renderer *renderer, Map &map_data)
 {
     if ( JumpTime != 0 )
     {
-        SDL_Rect jumpForce = { SCREEN_WIDTH - 100, 0, JumpTime * 100 / MAX_JUMP_TIME, 20};
+        SDL_Rect jumpForce;
+        if((y_pos - map_data.start_y - 20) > 0)
+           {
+               jumpForce = { x_pos + WidthFrame / 2 -  (75) / 2 , (y_pos - map_data.start_y - 20) , JumpTime * 75 / MAX_JUMP_TIME, 10};
+           }
+        else jumpForce = { x_pos + WidthFrame / 2 -  (75) / 2 , (y_pos - map_data.start_y + HeightFrame + 20) , JumpTime * 75 / MAX_JUMP_TIME, 10};
         SDL_SetRenderDrawColor( renderer, 255, 0, 0, 255 );
         SDL_RenderFillRect( renderer, &jumpForce );
     }

@@ -2,7 +2,7 @@
 1716298857 source:d:\games\sdl_game\jump_king\jump_king\commonfun.cpp
 	"CommonFun.h"
 
-1716388008 source:d:\games\sdl_game\jump_king\jump_king\main.cpp
+1716455819 source:d:\games\sdl_game\jump_king\jump_king\main.cpp
 	<iostream>
 	<SDL.h>
 	<SDL_image.h>
@@ -32,10 +32,10 @@
 1715443239 d:\games\sdl_game\jump_king\jump_king\map.h
 	"BaseObject.h"
 
-1716386700 source:d:\games\sdl_game\jump_king\jump_king\king.cpp
+1716452289 source:d:\games\sdl_game\jump_king\jump_king\king.cpp
 	"King.h"
 
-1716386652 d:\games\sdl_game\jump_king\jump_king\king.h
+1716451666 d:\games\sdl_game\jump_king\jump_king\king.h
 	"BaseObject.h"
 
 1716388008 source:d:\games\sdl_game\jump_king\jump_king\princess.cpp
